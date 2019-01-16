@@ -38,6 +38,8 @@ public class HttpUtil {
 	
 	public static final String GET  = "GET";
 	public static final String POST = "POST";
+	public static final String PUT = "PUT";
+	public static final String DELETE = "DELETE";
 	public static final String CHARSET = "UTF-8";
 	
 	private HttpUtil() {}
@@ -276,5 +278,45 @@ public class HttpUtil {
 				try {br.close();} catch (IOException e) {e.printStackTrace();}
 			}
 		}
+	}
+	//==================================================================================================================
+
+	public static String put(String url, Map<String, String> queryParas, Map<String, String> headers, String charset) {
+		logger.info("get url:" + url);
+		logger.info("params:" + JSON.toJSONString(queryParas));
+		HttpURLConnection conn = null;
+		try {
+			conn = getHttpConnection(buildUrlWithQueryString(url, queryParas, charset), PUT, headers);
+			conn.connect();
+			return readResponseString(conn, charset);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (conn != null) {
+				conn.disconnect();
+			}
+		}
+	}
+	public static String put(String url, Map<String, String> queryParas){
+		return put(url,queryParas,null,CHARSET);
+	}
+	public static String delete(String url, Map<String, String> queryParas, Map<String, String> headers, String charset) {
+		logger.info("get url:" + url);
+		logger.info("params:" + JSON.toJSONString(queryParas));
+		HttpURLConnection conn = null;
+		try {
+			conn = getHttpConnection(buildUrlWithQueryString(url, queryParas, charset), DELETE, headers);
+			conn.connect();
+			return readResponseString(conn, charset);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (conn != null) {
+				conn.disconnect();
+			}
+		}
+	}
+	public static String delete(String url, Map<String, String> queryParas){
+		return put(url,queryParas,null,CHARSET);
 	}
 }
