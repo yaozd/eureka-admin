@@ -74,6 +74,9 @@ public class EurekaClientController {
 	public ResultMap status(@PathVariable String appName, String instanceId, String status){
 		Application application = eurekaClient.getApplication(appName);
 		InstanceInfo instanceInfo = application.getByInstanceId(instanceId);
+		//只人为的修改本地的服务状态，但实际的服务状态，并没有通知到其他客户端。
+		//其他客户端还需要等待一段时间才可以获取到状态的变更。
+		//这种操作会给开发一个假象，认为服务状态已经变更完成。
 		instanceInfo.setStatus(InstanceStatus.toEnum(status));
 		Map<String, String> headers = new HashMap<>();
 		headers.put("Content-Type", "text/plain");

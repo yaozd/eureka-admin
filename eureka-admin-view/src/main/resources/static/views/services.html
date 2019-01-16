@@ -160,7 +160,10 @@
 		    layer.close(index);
 		    
 		    $.ajax({
-				url: '/eureka/status/' + app,
+				//调用EurekaClientController的接口
+				//url: '/eureka/status/' + app,
+				//调用EurekaClientControllerApi的接口
+				url: '/api/eureka/status/' + app,
 				type: 'post',
 				dataType: 'json',
 				data: {
@@ -181,7 +184,10 @@
 		    layer.close(index);
 		    
 		    $.ajax({
-				url: '/eureka/status/' + app,
+                //调用EurekaClientController的接口
+                //url: '/eureka/status/' + app,
+                //调用EurekaClientControllerApi的接口
+				url: '/api/eureka/status/' + app,
 				type: 'post',
 				dataType: 'json',
 				data: {
