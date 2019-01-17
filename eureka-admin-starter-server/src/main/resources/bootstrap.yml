@@ -8,7 +8,12 @@ eureka:
     fetch-registry: true
     filterOnlyUpInstances: false
     serviceUrl:
-       defaultZone: http://localhost:8888/eureka/
+       # peer1:自定义系统“com.hb.frame.root”的eureka地址
+       #defaultZone: http://peer1:8761/eureka,http://peer2:8762/eureka
+       #localhost：“eureka-admin-sample-eureka-server”的eureka地址
+       defaultZone: http://localhost:8888/eureka
+    #从eureka服务器注册表中获取注册信息的时间间隔（s），默认为30秒
+    registry-fetch-interval-seconds: 5
 logging:
   level:
     com:

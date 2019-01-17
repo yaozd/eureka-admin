@@ -1,4 +1,12 @@
 ![image](https://img.shields.io/circleci/project/github/RedSparr0w/node-csgo-parser.svg)
+# 备注-等待“7秒”
+```
+目前的服务更新配置大约时间在7秒左右。
+如果一个服务需要发版下线的流程
+1.设置为“OUT_OF_SERVICE”
+2.等待“7秒”
+3.关闭程序（优雅退出程序）
+```
 # Eureka Admin 管控平台
 #### Eureka Admin 管控平台是Spring Cloud中国社区为Eureka注册中心开源的一个节点监控、服务动态启停的项目。
 ***
